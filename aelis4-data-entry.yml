@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: aelis4-data-entry
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 20000
+      connection-test-query: SELECT 1 FROM dual;
+      minimum-idle: 1
+  jpa:
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: root
+      password: s3cr3t
+
+app:
+  datasource:
+    url: jdbc:mysql://localhost:3306/aelis4?serverTimezone=UTC
+    username: root
+    password: vertical601
+    maximum-pool-size: 5
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate: INFO
+    com:
+      zaxxer:
+        hikari: INFO
+  file: /tmp/aelis4-data-entry.log
+
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+      hostname: localhost
+      instanceId: ${spring.application.name}:${spri‌​ng.application.insta‌​nce_id:${random.valu‌​e}}
