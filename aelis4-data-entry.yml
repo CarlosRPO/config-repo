@@ -46,3 +46,6 @@ eureka:
   instance:
       hostname: localhost
       instanceId: ${spring.application.name}:${spri‌​ng.application.insta‌​nce_id:${random.valu‌​e}}
+
+flyway:
+  enabled: false
